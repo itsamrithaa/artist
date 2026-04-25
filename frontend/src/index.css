@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-brand-primary: #00f2ff;
+  --color-brand-secondary: #00d9ff;
+  --color-brand-danger: #ff2d55;
+  --color-brand-warning: #ffb800;
+  --color-brand-neutral: #1a1a1a;
+  
+  --color-background: #000000;
+  --color-card: #0a0a0a;
+  --color-border: #1a1a1a;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-slate-400 antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+.glass-panel {
+  @apply bg-[#0a0a0a] border border-[#1a1a1a] rounded-xl shadow-2xl;
+}
+
+.neon-border {
+  @apply border-brand-primary/30 shadow-[0_0_15px_rgba(0,242,255,0.1)];
+}
+
+.neon-text {
+  @apply text-brand-primary drop-shadow-[0_0_8px_rgba(0,242,255,0.5)];
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-[#1a1a1a] rounded-full hover:bg-brand-primary/30 transition-colors;
+}
+
+.scientific-grid {
+  background-size: 60px 60px;
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 0);
+}
