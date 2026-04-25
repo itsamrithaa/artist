@@ -140,6 +140,16 @@ export default function App() {
     }
   };
 
+    const handleExportSmiles = () => {
+    const element = document.createElement("a");
+    const file = new Blob([currentSmiles], { type: 'text/plain' });
+    element.href = URL.createObjectURL(file);
+    element.download = `molecule_${Date.now()}.smiles`;
+    document.body.appendChild(element); 
+    element.click();
+    document.body.removeChild(element);
+  };
+
   return (
     <div className="min-h-screen scientific-grid selection:bg-brand-primary/30 flex flex-col">
       {/* Header */}
@@ -352,12 +362,15 @@ export default function App() {
               <ComplianceItem label="Lipophilicity" status={metrics.logp < 5 ? 'success' : 'error'} />
               <ComplianceItem label="Synthesis ease" status={metrics.sas < 4.5 ? 'success' : 'warning'} />
               
-              <div className="pt-8">
-                <button className="w-full py-4 bg-brand-primary/10 border border-brand-primary/20 hover:bg-brand-primary/20 text-brand-primary text-xs font-black rounded transition-all uppercase tracking-widest flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(0,242,255,0.1)]">
-                  <Download className="w-4 h-4" />
-                  Export SMILES
-                </button>
-              </div>
+            <div className="pt-8">
+              <button 
+                onClick={handleExportSmiles} 
+                className="w-full py-4 bg-brand-primary/10 border border-brand-primary/20 hover:bg-brand-primary/20 text-brand-primary text-xs font-black rounded transition-all uppercase tracking-widest flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(0,242,255,0.1)]"
+              >
+                <Download className="w-4 h-4" />
+                Export SMILES
+              </button>
+            </div>
             </div>
           </div>
         </section>
